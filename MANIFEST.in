@@ -1,2 +1,1 @@
-prune src/legacy
 recursive-include config *.yaml

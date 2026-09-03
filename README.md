@@ -38,7 +38,7 @@ flowchart LR
     Verify -->|否| Refuse[修复或拒答]
 ```
 
-后端使用 FastAPI，前端使用 React/Vinext；本地 SQLite 保存论文元数据、对话和运行轨迹，Chroma 保存向量。HardSec Scholar 以 [Open Deep Research](https://github.com/langchain-ai/open_deep_research) 为底座，但为本地论文问答实现了独立的 `hardsec_scholar` 包和专用 LangGraph。
+后端使用 FastAPI，前端使用 React/Vinext；本地 SQLite 保存论文元数据、对话和运行轨迹，Chroma 保存向量。项目最初参考 [Open Deep Research](https://github.com/langchain-ai/open_deep_research) 立项，但论文摄取、混合检索、专用 LangGraph、引用验证、API、历史与评测均在 `hardsec_scholar` 包中独立实现；仓库不再携带未使用的上游运行代码。
 
 ## 快速开始（Windows）
 
@@ -139,7 +139,7 @@ config/             # 非敏感运行参数
 data/evaluations/   # 评测集；运行结果默认忽略
 scripts/            # 启停、评测与数据校验脚本
 tests/              # 单元与集成测试
-docs/               # 运行、评测与面试材料
+docs/               # 运行与评测文档
 ```
 
 ## 开发与验证
@@ -170,4 +170,4 @@ npm test
 
 论文 PDF、SQLite、Chroma、日志和 `.env` 均属于本地运行数据，不应提交到公开仓库。公开项目时请确认你拥有论文文件的分发权；建议只提交代码、配置模板和可公开的评测元数据。
 
-项目基于 Open Deep Research 二次开发，代码按仓库中的 [MIT License](LICENSE) 发布。上游通用研究 Agent 保留在 `src/open_deep_research`，本项目功能位于 `src/hardsec_scholar`。
+项目最初参考 Open Deep Research 立项，代码按仓库中的 [MIT License](LICENSE) 发布，并保留上游许可署名。当前产品代码位于 `src/hardsec_scholar`，不依赖上游 Agent 的运行实现。

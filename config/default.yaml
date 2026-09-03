@@ -1,0 +1,36 @@
+retrieval:
+  dense_top_k: 20
+  bm25_top_k: 20
+  rerank_top_k: 6
+  rrf_k: 60
+  collection_name: hardsec_papers
+  reranker_enabled: true
+  reranker_model: ms-marco-TinyBERT-L-2-v2
+  reranker_cache: data/models/flashrank
+
+agent:
+  max_retrieval_retries: 2
+  max_answer_repairs: 1
+  max_queries_per_round: 6
+  web_search_default: false
+
+generation:
+  max_context_evidence: 6
+  max_evidence_per_paper: 3
+  refusal_message: The indexed papers do not provide enough evidence to answer this question.
+
+chunking:
+  chunk_size_tokens: 700
+  overlap_tokens: 100
+
+ingestion:
+  max_file_size_mb: 50
+  exclude_references: true
+  accepted_extensions:
+    - .pdf
+
+paths:
+  papers: data/papers
+  chroma: data/chroma
+  evaluations: data/evaluations
+  database: data/hardsec_scholar.db

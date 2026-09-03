@@ -1,0 +1,43 @@
+name: HardSec Scholar CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.11"
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --extra dev --locked
+      - name: Ruff
+        run: uv run ruff check src/hardsec_scholar tests/unit tests/integration
+      - name: Mypy
+        run: uv run mypy src/hardsec_scholar
+      - name: Unit tests
+        run: uv run pytest tests/unit tests/integration
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Build and rendered HTML tests
+        run: npm test

@@ -1,0 +1,25 @@
+sca:
+  - side-channel attack
+  - side channel analysis
+dpa:
+  - differential power analysis
+cpa:
+  - correlation power analysis
+em:
+  - electromagnetic
+  - electromagnetic side channel
+fi:
+  - fault injection
+puf:
+  - physical unclonable function
+rtl:
+  - register-transfer level
+dut:
+  - device under test
+fuzzing:
+  - fuzz testing
+  - coverage-guided fuzzing
+  - hardware fuzzing
+microarchitectural:
+  - micro-architectural
+  - architecture-level

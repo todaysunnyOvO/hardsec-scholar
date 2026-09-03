@@ -25,6 +25,7 @@ wheels/
 *.egg
 
 # Virtual environments
+.venv/
 venv/
 env/
 ENV/
@@ -65,5 +66,21 @@ node_modules/
 # Temporary files
 tmp/
 temp/
+.docx_qa/
+
+# Personal notes and one-off document utilities
+optimize_docx_table.py
+rag学习.md
 
 .langgraph_api
+
+# HardSec Scholar local data
+paper/
+data/papers/
+data/chroma/
+data/models/
+data/evaluations/results/
+data/run/
+data/*.db
+data/*.sqlite
+data/*.sqlite3
